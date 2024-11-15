@@ -13,7 +13,7 @@ const Footer = () => {
               We help you discover the best tour packages and travel experiences across the world with ease and simplicity.
             </p>
             {/* Social Icons */}
-            <div className="mt-6 flex space-x-4">
+            {/* <div className="mt-6 flex space-x-4">
               <a href="#" className="text-ffd819 hover:text-fff2b2 transition-colors">
                 <i className="fab fa-linkedin-in"></i>
               </a>
@@ -26,7 +26,7 @@ const Footer = () => {
               <a href="#" className="text-ffd819 hover:text-fff2b2 transition-colors">
                 <i className="fas fa-infinity"></i>
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Company Links */}
@@ -34,9 +34,9 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-ffe14c uppercase tracking-wider">Company</h3>
             <ul className="mt-4 space-y-4">
               <li><Link to="/about" className="text-ffd819 hover:text-fff2b2 transition-colors">About Us</Link></li>
-              <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Careers</Link></li>
+              {/* <li><Link to="" className="text-ffd819 hover:text-fff2b2 transition-colors">Careers</Link></li> */}
               <li><Link to="/blog" className="text-ffd819 hover:text-fff2b2 transition-colors">Blog</Link></li>
-              <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Pricing</Link></li>
+              {/* <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Pricing</Link></li> */}
             </ul>
           </div>
 
@@ -44,10 +44,10 @@ const Footer = () => {
           <div>
             <h3 className="text-sm font-semibold text-ffe14c uppercase tracking-wider">Destinations</h3>
             <ul className="mt-4 space-y-4">
-              <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Lahore</Link></li>
-              <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Karachi</Link></li>
-              <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Islamabad</Link></li>
-              <li><Link to="#" className="text-ffd819 hover:text-fff2b2 transition-colors">Quetta</Link></li>
+              <li><Link to="/populardestination" className="text-ffd819 hover:text-fff2b2 transition-colors">Lahore</Link></li>
+              <li><Link to="/populardestination" className="text-ffd819 hover:text-fff2b2 transition-colors">Karachi</Link></li>
+              <li><Link to="/populardestination" className="text-ffd819 hover:text-fff2b2 transition-colors">Islamabad</Link></li>
+              <li><Link to="/populardestination" className="text-ffd819 hover:text-fff2b2 transition-colors">Quetta</Link></li>
             </ul>
           </div>
 
@@ -75,8 +75,8 @@ const Footer = () => {
         <div className="mt-12 border-t border-ffd400 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-fff2b2">
           <p>&copy; 2024 MA Tour & Travel. All Rights Reserved.</p>
           <div className="mt-4 md:mt-0 flex space-x-4">
-            <Link to="#" className="hover:text-ffd819 transition-colors">Terms of Service</Link>
-            <Link to="#" className="hover:text-ffd819 transition-colors">Privacy Policy</Link>
+            <Link to="/populardestination" className="hover:text-ffd819 transition-colors">Terms of Service</Link>
+            <Link to="/populardestination" className="hover:text-ffd819 transition-colors">Privacy Policy</Link>
           </div>
         </div>
       </div>
