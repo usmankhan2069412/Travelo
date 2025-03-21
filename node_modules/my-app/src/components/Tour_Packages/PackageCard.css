@@ -1,0 +1,8 @@
+.custom-line-clamp {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.2rem; /* adjust based on font size */
+    max-height: 3rem; /* limit height to 2.5 lines */
+}

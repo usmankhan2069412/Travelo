@@ -1,0 +1,55 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f1f1;
+}
+
+/* Input Fields */
+.input-field {
+    padding: 12px; /* Increased padding for a more spacious feel */
+    margin: 10px 0; /* Adjust margin for spacing */
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Make corners rounder */
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+    font-size: 16px; /* Slightly larger font size for better readability */
+}
+
+.input-field:focus {
+    border-color: #4A90E2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Add shadow effect on focus */
+}
+
+/* Button Styles */
+button {
+    width: 100%; /* Full width button for better usability */
+    padding: 12px; /* Added padding for a larger click area */
+    background-color: #4A90E2; /* Default background color */
+    border: none; /* No border */
+    border-radius: 8px; /* Round corners */
+    color: white; /* White text color */
+    font-size: 18px; /* Larger font for visibility */
+    font-weight: bold; /* Bold font weight */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transition for background and shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #357ABD; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover for depth */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .input-field {
+        margin: 8px 0; /* Less margin on smaller screens */
+    }
+}
