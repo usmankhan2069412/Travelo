@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const AdminDashboard = () => {
     return (
         <>
@@ -14,22 +15,22 @@ const AdminDashboard = () => {
                                 <div className="icon">
                                     <i className="ion ion-bag"></i>
                                 </div>
-                                <a href="#" className="small-box-footer">More info <i
-                                    className="fas fa-arrow-circle-right"></i></a>
+                                <Link to="/admin/orders" className="small-box-footer">More info <i
+                                    className="fas fa-arrow-circle-right"></i></Link>
                             </div>
                         </div>
                         <div className="col-lg-3 col-6">
                             <div className="small-box bg-success">
                                 <div className="inner">
-                                    <h3>53<sup style={{ "font-size":"20px"}}>%</sup></h3>
+                                    <h3>53<sup style={{ fontSize: '20px' }}>%</sup></h3>
 
                                     <p>Bounce Rate</p>
                                 </div>
                                 <div className="icon">
                                     <i className="ion ion-stats-bars"></i>
                                 </div>
-                                <a href="#" className="small-box-footer">More info <i
-                                    className="fas fa-arrow-circle-right"></i></a>
+                                <Link to="#" className="small-box-footer">More info <i
+                                    className="fas fa-arrow-circle-right"></i></Link>
                             </div>
                         </div>
                         <div className="col-lg-3 col-6">
@@ -41,8 +42,8 @@ const AdminDashboard = () => {
                                 <div className="icon">
                                     <i className="ion ion-person-add"></i>
                                 </div>
-                                <a href="#" className="small-box-footer">More info <i
-                                    className="fas fa-arrow-circle-right"></i></a>
+                                <Link to="#" className="small-box-footer">More info <i
+                                    className="fas fa-arrow-circle-right"></i></Link>
                             </div>
                         </div>
                         <div className="col-lg-3 col-6">
@@ -54,8 +55,8 @@ const AdminDashboard = () => {
                                 <div className="icon">
                                     <i className="ion ion-pie-graph"></i>
                                 </div>
-                                <a href="#" className="small-box-footer">More info <i
-                                    className="fas fa-arrow-circle-right"></i></a>
+                                <Link to="#" className="small-box-footer">More info <i
+                                    className="fas fa-arrow-circle-right"></i></Link>
                             </div>
                         </div>
                     </div>
@@ -71,11 +72,11 @@ const AdminDashboard = () => {
                                         <ul className="nav nav-pills ml-auto">
                                             <li className="nav-item">
                                                 <a className="nav-link active" href="#revenue-chart"
-                                                   data-toggle="tab">Area</a>
+                                                    data-toggle="tab">Area</a>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#sales-chart"
-                                                   data-toggle="tab">Donut</a>
+                                                <Link className="nav-link" to="#sales-chart"
+                                                    data-toggle="tab">Donut</Link>
                                             </li>
                                         </ul>
                                     </div>
@@ -83,14 +84,14 @@ const AdminDashboard = () => {
                                 <div className="card-body">
                                     <div className="tab-content p-0">
                                         <div className="chart tab-pane active" id="revenue-chart"
-                                             style={{"position":"relative","height": "300px"}}>
+                                            style={{ position: 'relative', height: '300px' }}>
                                             <canvas id="revenue-chart-canvas" height="300"
-                                                    style={{"height":" 300px"}}></canvas>
+                                                style={{ height: '300px' }}></canvas>
                                         </div>
                                         <div className="chart tab-pane" id="sales-chart"
-                                             style={{"position": "relative"," height":" 300px"}}>
+                                            style={{ position: 'relative', height: '300px' }}>
                                             <canvas id="sales-chart-canvas" height="300"
-                                                    style={{"height":"300px"}}></canvas>
+                                                style={{ height: '300px' }}></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +106,7 @@ const AdminDashboard = () => {
                                             <i className="fas fa-minus"></i>
                                         </button>
                                         <button type="button" className="btn btn-tool" title="Contacts"
-                                                data-widget="chat-pane-toggle">
+                                            data-widget="chat-pane-toggle">
                                             <i className="fas fa-comments"></i>
                                         </button>
                                         <button type="button" className="btn btn-tool" data-card-widget="remove">
@@ -117,13 +118,13 @@ const AdminDashboard = () => {
                                     <div className="direct-chat-messages">
                                         <div className="direct-chat-msg">
                                             <div className="direct-chat-infos clearfix">
-                                                    <span
-                                                        className="direct-chat-name float-left">Alexander Pierce</span>
+                                                <span
+                                                    className="direct-chat-name float-left">Alexander Pierce</span>
                                                 <span
                                                     className="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                                             </div>
                                             <img className="direct-chat-img" src="dist/img/user1-128x128.jpg"
-                                                 alt="message user image"/>
+                                                alt="message user image" />
                                             <div className="direct-chat-text">
                                                 Is this template really for free? That's unbelievable!
                                             </div>
@@ -135,20 +136,20 @@ const AdminDashboard = () => {
                                                     className="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                                             </div>
                                             <img className="direct-chat-img" src="dist/img/user3-128x128.jpg"
-                                                 alt="message user image"/>
+                                                alt="message user image" />
                                             <div className="direct-chat-text">
                                                 You better believe it!
                                             </div>
                                         </div>
                                         <div className="direct-chat-msg">
                                             <div className="direct-chat-infos clearfix">
-                                                    <span
-                                                        className="direct-chat-name float-left">Alexander Pierce</span>
+                                                <span
+                                                    className="direct-chat-name float-left">Alexander Pierce</span>
                                                 <span
                                                     className="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                                             </div>
                                             <img className="direct-chat-img" src="dist/img/user1-128x128.jpg"
-                                                 alt="message user image"/>
+                                                alt="message user image" />
                                             <div className="direct-chat-text">
                                                 Working with AdminLTE on a great new app! Wanna join?
                                             </div>
@@ -160,7 +161,7 @@ const AdminDashboard = () => {
                                                     className="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                                             </div>
                                             <img className="direct-chat-img" src="dist/img/user3-128x128.jpg"
-                                                 alt="message user image"/>
+                                                alt="message user image" />
                                             <div className="direct-chat-text">
                                                 I would love to.
                                             </div>
@@ -169,30 +170,23 @@ const AdminDashboard = () => {
                                     <div className="direct-chat-contacts">
                                         <ul className="contacts-list">
                                             <li>
-                                                <a href="#">
+                                                <button className="contacts-list-btn" onClick={handleContactClick}> {/* Changed to button */}
                                                     <img className="contacts-list-img"
-                                                         src="dist/img/user1-128x128.jpg" alt="User Avatar"/>
-
-                                                    <div className="contacts-list-info">
-                          <span className="contacts-list-name">
-                            Count Dracula
-                            <small className="contacts-list-date float-right">2/28/2015</small>
-                          </span>
-                                                        <span
-                                                            className="contacts-list-msg">How have you been? I was...</span>
-                                                    </div>
-                                                </a>
+                                                        src="dist/img/user1-128x128.jpg"
+                                                        alt="User Avatar" />
+                                                    {/* ... rest of contact list content ... */}
+                                                </button>
                                             </li>
                                             <li>
                                                 <a href="#">
                                                     <img className="contacts-list-img"
-                                                         src="dist/img/user7-128x128.jpg" alt="User Avatar"/>
+                                                        src="dist/img/user7-128x128.jpg" alt="User Avatar" />
 
                                                     <div className="contacts-list-info">
-                          <span className="contacts-list-name">
-                            Sarah Doe
-                            <small className="contacts-list-date float-right">2/23/2015</small>
-                          </span>
+                                                        <span className="contacts-list-name">
+                                                            Sarah Doe
+                                                            <small className="contacts-list-date float-right">2/23/2015</small>
+                                                        </span>
                                                         <span
                                                             className="contacts-list-msg">I will be waiting for...</span>
                                                     </div>
@@ -201,13 +195,13 @@ const AdminDashboard = () => {
                                             <li>
                                                 <a href="#">
                                                     <img className="contacts-list-img"
-                                                         src="dist/img/user3-128x128.jpg" alt="User Avatar"/>
+                                                        src="dist/img/user3-128x128.jpg" alt="User Avatar" />
 
                                                     <div className="contacts-list-info">
-                          <span className="contacts-list-name">
-                            Nadia Jolie
-                            <small className="contacts-list-date float-right">2/20/2015</small>
-                          </span>
+                                                        <span className="contacts-list-name">
+                                                            Nadia Jolie
+                                                            <small className="contacts-list-date float-right">2/20/2015</small>
+                                                        </span>
                                                         <span
                                                             className="contacts-list-msg">I'll call you back at...</span>
                                                     </div>
@@ -216,13 +210,13 @@ const AdminDashboard = () => {
                                             <li>
                                                 <a href="#">
                                                     <img className="contacts-list-img"
-                                                         src="dist/img/user5-128x128.jpg" alt="User Avatar"/>
+                                                        src="dist/img/user5-128x128.jpg" alt="User Avatar" />
 
                                                     <div className="contacts-list-info">
-                          <span className="contacts-list-name">
-                            Nora S. Vans
-                            <small className="contacts-list-date float-right">2/10/2015</small>
-                          </span>
+                                                        <span className="contacts-list-name">
+                                                            Nora S. Vans
+                                                            <small className="contacts-list-date float-right">2/10/2015</small>
+                                                        </span>
                                                         <span
                                                             className="contacts-list-msg">Where is your new...</span>
                                                     </div>
@@ -231,13 +225,13 @@ const AdminDashboard = () => {
                                             <li>
                                                 <a href="#">
                                                     <img className="contacts-list-img"
-                                                         src="dist/img/user6-128x128.jpg" alt="User Avatar"/>
+                                                        src="dist/img/user6-128x128.jpg" alt="User Avatar" />
 
                                                     <div className="contacts-list-info">
-                          <span className="contacts-list-name">
-                            John K.
-                            <small className="contacts-list-date float-right">1/27/2015</small>
-                          </span>
+                                                        <span className="contacts-list-name">
+                                                            John K.
+                                                            <small className="contacts-list-date float-right">1/27/2015</small>
+                                                        </span>
                                                         <span
                                                             className="contacts-list-msg">Can I take a look at...</span>
                                                     </div>
@@ -246,13 +240,13 @@ const AdminDashboard = () => {
                                             <li>
                                                 <a href="#">
                                                     <img className="contacts-list-img"
-                                                         src="dist/img/user8-128x128.jpg" alt="User Avatar"/>
+                                                        src="dist/img/user8-128x128.jpg" alt="User Avatar" />
 
                                                     <div className="contacts-list-info">
-                          <span className="contacts-list-name">
-                            Kenneth M.
-                            <small className="contacts-list-date float-right">1/4/2015</small>
-                          </span>
+                                                        <span className="contacts-list-name">
+                                                            Kenneth M.
+                                                            <small className="contacts-list-date float-right">1/4/2015</small>
+                                                        </span>
                                                         <span
                                                             className="contacts-list-msg">Never mind I found...</span>
                                                     </div>
@@ -265,10 +259,10 @@ const AdminDashboard = () => {
                                     <form action="#" method="post">
                                         <div className="input-group">
                                             <input type="text" name="message" placeholder="Type Message ..."
-                                                   className="form-control"/>
+                                                className="form-control" />
                                             <span className="input-group-append">
-                      <button type="button" className="btn btn-primary">Send</button>
-                    </span>
+                                                <button type="button" className="btn btn-primary">Send</button>
+                                            </span>
                                         </div>
                                     </form>
                                 </div>
@@ -282,7 +276,10 @@ const AdminDashboard = () => {
 
                                     <div className="card-tools">
                                         <ul className="pagination pagination-sm">
-                                            <li className="page-item"><a href="#" className="page-link">&laquo;</a>
+                                            <li className="page-item">
+                                                <button className="page-link" onClick={handlePagination}> {/* Changed to button */}
+                                                    &laquo;
+                                                </button>
                                             </li>
                                             <li className="page-item"><a href="#" className="page-link">1</a></li>
                                             <li className="page-item"><a href="#" className="page-link">2</a></li>
@@ -295,12 +292,12 @@ const AdminDashboard = () => {
                                 <div className="card-body">
                                     <ul className="todo-list" data-widget="todo-list">
                                         <li>
-                                                <span className="handle">
-                      <i className="fas fa-ellipsis-v"></i>
-                      <i className="fas fa-ellipsis-v"></i>
-                    </span>
+                                            <span className="handle">
+                                                <i className="fas fa-ellipsis-v"></i>
+                                                <i className="fas fa-ellipsis-v"></i>
+                                            </span>
                                             <div className="icheck-primary d-inline ml-2">
-                                                <input type="checkbox" value="" name="todo1" id="todoCheck1"/>
+                                                <input type="checkbox" value="" name="todo1" id="todoCheck1" />
                                                 <label htmlFor="todoCheck1"></label>
                                             </div>
                                             <span className="text">Design a nice theme</span>
@@ -312,13 +309,13 @@ const AdminDashboard = () => {
                                             </div>
                                         </li>
                                         <li>
-                    <span className="handle">
-                      <i className="fas fa-ellipsis-v"></i>
-                      <i className="fas fa-ellipsis-v"></i>
-                    </span>
+                                            <span className="handle">
+                                                <i className="fas fa-ellipsis-v"></i>
+                                                <i className="fas fa-ellipsis-v"></i>
+                                            </span>
                                             <div className="icheck-primary d-inline ml-2">
                                                 <input type="checkbox" value="" name="todo2" id="todoCheck2"
-                                                       checked/>
+                                                    checked />
                                                 <label htmlFor="todoCheck2"></label>
                                             </div>
                                             <span className="text">Make the theme responsive</span>
@@ -330,12 +327,12 @@ const AdminDashboard = () => {
                                             </div>
                                         </li>
                                         <li>
-                    <span className="handle">
-                      <i className="fas fa-ellipsis-v"></i>
-                      <i className="fas fa-ellipsis-v"></i>
-                    </span>
+                                            <span className="handle">
+                                                <i className="fas fa-ellipsis-v"></i>
+                                                <i className="fas fa-ellipsis-v"></i>
+                                            </span>
                                             <div className="icheck-primary d-inline ml-2">
-                                                <input type="checkbox" value="" name="todo3" id="todoCheck3"/>
+                                                <input type="checkbox" value="" name="todo3" id="todoCheck3" />
                                                 <label htmlFor="todoCheck3"></label>
                                             </div>
                                             <span className="text">Let theme shine like a star</span>
@@ -347,12 +344,12 @@ const AdminDashboard = () => {
                                             </div>
                                         </li>
                                         <li>
-                    <span className="handle">
-                      <i className="fas fa-ellipsis-v"></i>
-                      <i className="fas fa-ellipsis-v"></i>
-                    </span>
+                                            <span className="handle">
+                                                <i className="fas fa-ellipsis-v"></i>
+                                                <i className="fas fa-ellipsis-v"></i>
+                                            </span>
                                             <div className="icheck-primary d-inline ml-2">
-                                                <input type="checkbox" value="" name="todo4" id="todoCheck4"/>
+                                                <input type="checkbox" value="" name="todo4" id="todoCheck4" />
                                                 <label htmlFor="todoCheck4"></label>
                                             </div>
                                             <span className="text">Let theme shine like a star</span>
@@ -364,12 +361,12 @@ const AdminDashboard = () => {
                                             </div>
                                         </li>
                                         <li>
-                    <span className="handle">
-                      <i className="fas fa-ellipsis-v"></i>
-                      <i className="fas fa-ellipsis-v"></i>
-                    </span>
+                                            <span className="handle">
+                                                <i className="fas fa-ellipsis-v"></i>
+                                                <i className="fas fa-ellipsis-v"></i>
+                                            </span>
                                             <div className="icheck-primary d-inline ml-2">
-                                                <input type="checkbox" value="" name="todo5" id="todoCheck5"/>
+                                                <input type="checkbox" value="" name="todo5" id="todoCheck5" />
                                                 <label htmlFor="todoCheck5"></label>
                                             </div>
                                             <span className="text">Check your messages and notifications</span>
@@ -381,12 +378,12 @@ const AdminDashboard = () => {
                                             </div>
                                         </li>
                                         <li>
-                    <span className="handle">
-                      <i className="fas fa-ellipsis-v"></i>
-                      <i className="fas fa-ellipsis-v"></i>
-                    </span>
+                                            <span className="handle">
+                                                <i className="fas fa-ellipsis-v"></i>
+                                                <i className="fas fa-ellipsis-v"></i>
+                                            </span>
                                             <div className="icheck-primary d-inline ml-2">
-                                                <input type="checkbox" value="" name="todo6" id="todoCheck6"/>
+                                                <input type="checkbox" value="" name="todo6" id="todoCheck6" />
                                                 <label htmlFor="todoCheck6"></label>
                                             </div>
                                             <span className="text">Let theme shine like a star</span>
@@ -415,17 +412,17 @@ const AdminDashboard = () => {
                                     </h3>
                                     <div className="card-tools">
                                         <button type="button" className="btn btn-primary btn-sm daterange"
-                                                title="Date range">
+                                            title="Date range">
                                             <i className="far fa-calendar-alt"></i>
                                         </button>
                                         <button type="button" className="btn btn-primary btn-sm"
-                                                data-card-widget="collapse" title="Collapse">
+                                            data-card-widget="collapse" title="Collapse">
                                             <i className="fas fa-minus"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div className="card-body">
-                                    <div id="world-map" style={{"height": "250px","width":"100%"}}></div>
+                                    <div id="world-map" style={{ height: '250px', width: '100%' }}></div>
                                 </div>
                                 <div className="card-footer bg-transparent">
                                     <div className="row">
@@ -454,39 +451,39 @@ const AdminDashboard = () => {
 
                                     <div className="card-tools">
                                         <button type="button" className="btn bg-info btn-sm"
-                                                data-card-widget="collapse">
+                                            data-card-widget="collapse">
                                             <i className="fas fa-minus"></i>
                                         </button>
                                         <button type="button" className="btn bg-info btn-sm"
-                                                data-card-widget="remove">
+                                            data-card-widget="remove">
                                             <i className="fas fa-times"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div className="card-body">
                                     <canvas className="chart" id="line-chart"
-                                            style={{"min-height":" 250px","height":" 250px"," max-height":" 250px","max-width": "100%"}}></canvas>
+                                        style={{ minHeight: '250px', height: '250px', maxHeight: '250px', maxWidth: '100%' }}></canvas>
                                 </div>
                                 <div className="card-footer bg-transparent">
                                     <div className="row">
                                         <div className="col-4 text-center">
                                             <input type="text" className="knob" data-readonly="true" value="20"
-                                                   data-width="60" data-height="60"
-                                                   data-fgColor="#39CCCC"/>
+                                                data-width="60" data-height="60"
+                                                data-fgColor="#39CCCC" />
 
                                             <div className="text-white">Mail-Orders</div>
                                         </div>
                                         <div className="col-4 text-center">
                                             <input type="text" className="knob" data-readonly="true" value="50"
-                                                   data-width="60" data-height="60"
-                                                   data-fgColor="#39CCCC"/>
+                                                data-width="60" data-height="60"
+                                                data-fgColor="#39CCCC" />
 
                                             <div className="text-white">Online</div>
                                         </div>
                                         <div className="col-4 text-center">
                                             <input type="text" className="knob" data-readonly="true" value="30"
-                                                   data-width="60" data-height="60"
-                                                   data-fgColor="#39CCCC"/>
+                                                data-width="60" data-height="60"
+                                                data-fgColor="#39CCCC" />
 
                                             <div className="text-white">In-Store</div>
                                         </div>
@@ -503,7 +500,7 @@ const AdminDashboard = () => {
                                     <div className="card-tools">
                                         <div className="btn-group">
                                             <button type="button" className="btn btn-success btn-sm dropdown-toggle"
-                                                    data-toggle="dropdown" data-offset="-52">
+                                                data-toggle="dropdown" data-offset="-52">
                                                 <i className="fas fa-bars"></i>
                                             </button>
                                             <div className="dropdown-menu" role="menu">
@@ -514,17 +511,17 @@ const AdminDashboard = () => {
                                             </div>
                                         </div>
                                         <button type="button" className="btn btn-success btn-sm"
-                                                data-card-widget="collapse">
+                                            data-card-widget="collapse">
                                             <i className="fas fa-minus"></i>
                                         </button>
                                         <button type="button" className="btn btn-success btn-sm"
-                                                data-card-widget="remove">
+                                            data-card-widget="remove">
                                             <i className="fas fa-times"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div className="card-body pt-0">
-                                    <div id="calendar" style={{"width": " 100%"}}></div>
+                                    <div id="calendar" style={{ width: '100%' }}></div>
                                 </div>
                             </div>
                         </section>
