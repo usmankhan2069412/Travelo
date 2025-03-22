@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import Herovideo from '../../assets/videos/video1.mp4';
 import Herovideo from '../../assets/videos/1021.mp4';
+import { motion } from "framer-motion";
+import { FaArrowTrendUp } from "react-icons/fa6";
 
 const Hero = () => {
   return (
@@ -24,6 +27,28 @@ const Hero = () => {
           Explore unforgettable destinations with ease. Choose the perfect tour
           and let the journey begin.
         </p>
+
+        <motion.div
+      className="mt-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      <Link
+        to="/package"
+        className="inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold text-black bg-white rounded-full transition duration-300 hover:text-white hover:bg-yellow-500 shadow-lg"
+      >
+        Explore Tours
+        <motion.span
+          className="text-xl"
+          initial={{ x: 0 }}
+          whileHover={{ x: 5 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <FaArrowTrendUp />
+        </motion.span>
+      </Link>
+    </motion.div>
       </div>
     </div>
   );

@@ -51,16 +51,7 @@ const Navbar = () => {
               </NavLink>
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
             </li>
-            <li className="relative group">
-              <NavLink
-                to="/package"
-                className="hover_link hover:scale-105 transition-transform duration-200 cursor-pointer relative"
-                activeClassName="text-[#F77F00]"
-              >
-                Our Packages
-              </NavLink>
-              <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
-            </li>
+            
             <li className="relative group">
               <NavLink
                 to="/help"
@@ -73,14 +64,15 @@ const Navbar = () => {
             </li>
             <li className="relative group">
               <NavLink
-                to="/login"
-                className="hover_link hover:scale-105 bg-gray-200 rounded-md shadow-md px-3 py-2 transition-transform duration-200 cursor-pointer relative"
+                to="/imageGallery"
+                className="hover_link hover:scale-105 transition-transform duration-200 cursor-pointer relative"
                 activeClassName="text-[#F77F00]"
               >
-                AdminPanel
+                Gallery
               </NavLink>
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
             </li>
+           
           </ul>
 
           {/* Contact Us Button */}

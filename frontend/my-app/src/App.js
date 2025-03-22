@@ -17,6 +17,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './components/Context/AuthContext';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
+import MasonryImagesGallery from './components/Image-gallery/MasonryImagesGallery';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -32,7 +33,6 @@ const BookingFormpage = lazy(() => import('./pages/BookingFormpage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const LoadingComponent = lazy(() => import('./components/LoadingComponent/LondingComponent'));
-
 function App() {
     return (
     <AuthProvider>   
@@ -45,6 +45,7 @@ function App() {
                     <Route path="/" element={<Navigate to="/home" />} />
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/populardestination" element={<PopularCities />} />
+                    <Route path="/imagegallery" element={<MasonryImagesGallery />} />
 
                     {/* Package-related routes */}
                     <Route path="/package" element={<Package />} />
@@ -58,6 +59,7 @@ function App() {
                     <Route path="/help" element={<Help />} />
                     <Route path="/help/faq" element={<FAQ />} />
                     <Route path="/blog" element={<BlogPage />} /> 
+
                     {/* Login and Signup routes */}
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
