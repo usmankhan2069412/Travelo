@@ -76,9 +76,9 @@ const Packages = () => {
 
     return (
         <div className="bg-[#F4F1DE] py-16">
-            <h1 className="text-5xl font-bold text-center text-[#0B3954] mb-10">
-                <span className="block">Packages</span>
-            </h1>
+             <h2 class="TITLE-PRIMARY text-4xl md:text-5xl font-bold mb-12 text-center">
+                            <div data-block-id="5JZrucw2TVq5cpX3xEmJL" data-prop-key="title" data-element-type="text" data-link="link=&amp;target=_blank&amp;text=Customized%20Popular%20Attractions" class="editable-text _editable_76oc9_60">Customized Popular Attractions</div>
+                        </h2>
             <p className="text-center text-lg text-[#2C5F2D] mb-12 px-4">
                 Discover our exclusive packages tailored to your travel needs. Enjoy unique experiences at amazing prices!
             </p>

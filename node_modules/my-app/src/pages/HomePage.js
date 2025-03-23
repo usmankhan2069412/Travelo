@@ -6,10 +6,9 @@ import Hero from "../components/Hero/Hero";
 import PopularCities from "../components/PopularCities/PopularCities";
 import Services from "../components/Services/Services";
 import Packages from "../components/Tour_Packages/Packages";
-import Gallery from "../components/Gallery/Gallery";
+import CustomerReviews from "../components/CustomerReviews";
 
-import Login from './Login';
-import SignUp from './SignUp';
+import TravelPage from "../pages/Travelpage";
 
 import '../App.css';
 
@@ -24,7 +23,8 @@ function HomePage() {
       <PopularCities />
       <Services />
       <Packages />
-      <Gallery />
+      <TravelPage />
+      
       <Footer />
     </>
   );
