@@ -18,6 +18,8 @@ import { AuthProvider } from './components/Context/AuthContext';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import MasonryImagesGallery from './components/Image-gallery/MasonryImagesGallery';
+import ThankYouPage from './components/ThankYou/ThankYou';
+import BookingDetailsPage from './pages/BookingDetailsPage';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -46,6 +48,8 @@ function App() {
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/populardestination" element={<PopularCities />} />
                     <Route path="/imagegallery" element={<MasonryImagesGallery />} />
+                    <Route path="/booking-details" element={<BookingDetailsPage />} />
+                    <Route path="/thank-you" element={<ThankYouPage />} />
 
                     {/* Package-related routes */}
                     <Route path="/package" element={<Package />} />
@@ -71,39 +75,24 @@ function App() {
                         
                         }>
                         <Route index element={
-                            <ProtectedRoute>
-                                <AdminDashboard />
-
-                            </ProtectedRoute>
+                            <AdminDashboard />
                             
                             } />
                         <Route path="blogs" element={
-                            <ProtectedRoute>
-                                <AdminBlogs/>
-                            </ProtectedRoute>
+                            <AdminBlogs/>
                             } />
                         <Route path="create-package" element={
-                            <ProtectedRoute>
-                                <AdminPackage />
-                            </ProtectedRoute>
+                            <AdminPackage />
                             } />
                         <Route path="contact-info" element={
-                            <ProtectedRoute>
                             <AdminUser/>
-                            </ProtectedRoute>
                             }/>
                         <Route path="booking-details" element={
-                            <ProtectedRoute>
-
-                                <BookingTable/>
-                            </ProtectedRoute>
+                            <BookingTable/>
 
                             }/>
                         <Route path="package-list" element={
-                            <ProtectedRoute>
-
-                                <PackageTable />
-                            </ProtectedRoute>
+                            <PackageTable />
 
                             } />
                         {/* <Route path="package-card" element={<PackageCardForm />} /> */}

@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import StripePayment from '../Payment/StripePayment';
 
 const BookingForm = ({ price }) => {
     // State for form inputs
+    const [showPayment, setShowPayment] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(price);
+    const [bookingId, setBookingId] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -10,10 +14,19 @@ const BookingForm = ({ price }) => {
         from_date: '',
         to_date: '',
         num_guests: 1, // Default value
-        price: price ,
+        price: price,
     });
     const navigate = useNavigate(); // Initialize useNavigate
 
+    // Update total price when number of guests changes
+    useEffect(() => {
+        const calculatedPrice = price * formData.num_guests;
+        setTotalPrice(calculatedPrice);
+        setFormData(prevData => ({
+            ...prevData,
+            price: calculatedPrice
+        }));
+    }, [formData.num_guests, price]);
 
     // Handle input changes
     const handleChange = (e) => {
@@ -38,22 +51,23 @@ const BookingForm = ({ price }) => {
             });
 
             if (!response.ok) throw new Error('Failed to book tour');
-           
-
-            // Alert success message
-            alert('Booking successful!');
-            navigate('/package/tour-detail/booking');
-
-            // Optionally, clear the form
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                from_date: '',
-                to_date: '',
-                num_guests: 1,
-                price :price ,
-            });
+            
+            // Get the response data
+            const bookingResult = await response.json();
+            
+            // Set the booking ID from the response
+            if (bookingResult.id) {
+                setBookingId(bookingResult.id);
+                // Update formData with the booking ID
+                setFormData(prevData => ({
+                    ...prevData,
+                    id: bookingResult.id
+                }));
+            }
+            
+            // Show payment form instead of redirecting
+            setShowPayment(true);
+            
         } catch (error) {
             console.error(error);
             alert('Error: ' + error.message); // Show error message
@@ -65,7 +79,13 @@ const BookingForm = ({ price }) => {
             <h2 className="text-3xl text-center font-bold mb-4 text-ffd400">Book Your Tour</h2>
             <div className="border-t-2 border-ffd819 w-full mx-auto mb-4"></div>
 
-            <form onSubmit={handleSubmit}> {/* Add onSubmit handler */}
+            {showPayment ? (
+                <div>
+                    <h3 className="text-xl font-bold mb-4 text-gray-800">Complete Your Payment</h3>
+                    <StripePayment bookingData={formData} />
+                </div>
+            ) : (
+                <form onSubmit={handleSubmit}>
                 {/* Name Field */}
                 <div className="flex flex-col mb-4">
                     <label htmlFor="name" className="mb-2 text-lg text-gray-700 font-semibold">Name:</label>
@@ -154,17 +174,18 @@ const BookingForm = ({ price }) => {
                 {/* Subtotal */}
                 <div className="flex justify-between mb-4 mt-2 text-lg text-gray-700">
                     <span>Subtotal:</span>
-                    <span className="font-bold">{price}</span>
+                    <span className="font-bold">${totalPrice}</span>
                 </div>
 
                 {/* Action Buttons */}
                 <button
-                    type="submit" // Change to submit type
+                    type="submit"
                     className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold mt-4 py-2 px-4 rounded w-full transition-all duration-300 ease-in-out"
                 >
                     Confirm Booking
                 </button>
             </form>
+            )}
         </div>
     );
 };
