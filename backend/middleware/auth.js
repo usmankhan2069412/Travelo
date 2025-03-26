@@ -1,24 +1,48 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Load environment variables
+// Load environment variables once at startup
+dotenv.config();
 
-const authMiddleware = (req, res, next) => {
-    // Get the token from the request headers
-    const token = req.header('Authorization')?.split(' ')[1]; // Assuming 'Bearer <token>' format
-
-    // Check if token is not present
-    if (!token) {
-        return res.status(401).json({ message: 'Access denied. No token provided.' });
-    }
-
+const authMiddleware = async (req, res, next) => {
     try {
-        // Verify the token
+        // Extract token from Authorization header
+        const authHeader = req.header('Authorization');
+        if (!authHeader?.startsWith('Bearer ')) {
+            return res.status(401).json({ 
+                success: false,
+                message: 'Access denied. No token provided.' 
+            });
+        }
+
+        const token = authHeader.split(' ')[1];
+        
+        // Verify and decode the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded; // Attach the user data to the request object
-        next(); // Proceed to the next middleware or route handler
+        
+        // Attach decoded user data to request
+        req.user = decoded;
+        next();
     } catch (error) {
-        res.status(400).json({ message: 'Invalid token.' });
+        // Handle different types of JWT errors
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(401).json({ 
+                success: false,
+                message: 'Invalid token format.' 
+            });
+        }
+        if (error.name === 'TokenExpiredError') {
+            return res.status(401).json({ 
+                success: false,
+                message: 'Token has expired.' 
+            });
+        }
+        
+        // Handle any other unexpected errors
+        return res.status(500).json({ 
+            success: false,
+            message: 'Authentication error.' 
+        });
     }
 };
 

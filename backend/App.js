@@ -5,6 +5,7 @@ import fs from 'fs';
 import contactRoutes from './routes/contact.route.js'; 
 import packageRoutes from './routes/package.route.js';
 import bookingRoutes from './routes/bookingroute.js';
+import paymentRoutes from './routes/payment.route.js';
 import './mongooseConection/connection.js'; // Ensure this points to your DB connection logic
 import signup from './routes/signup.route.js';
 const app = express();
@@ -28,6 +29,7 @@ app.use('/uploads', express.static(uploadDir)); // Change to serve from /uploads
 app.use('/contact', contactRoutes);  // Base route for all contact-related endpoints
 app.use('/package/api', packageRoutes); // Base route for package-related endpoints
 app.use('/api',bookingRoutes); // Base route for all booking routes for
+app.use('/api/payment', paymentRoutes); // Base route for payment processing
 app.use('/api/account',signup );
 // Error handling for unhandled routes
 app.use((req, res) => {

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
-import UpdatePopUpForm from './Update_booking'; // Ensure this import is present for the popup
+import UpdatePopUpForm from './Update_booking';
 
 const BookingTable = () => {
     const [bookings, setBookings] = useState([]);
@@ -16,18 +16,55 @@ const BookingTable = () => {
         price: 0,
     });
 
-    // Fetch bookings when the component mounts
-    useEffect(() => {
-        fetchBookings();
-    }, []);
-
-    // Function to fetch all bookings
-    const fetchBookings = async () => {
+    const fetchBookings = useCallback(async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/bookings');
-            setBookings(response.data); // Set the fetched bookings to state
+            if (response.data) {
+                setBookings(response.data);
+            }
         } catch (error) {
-            console.error("Error fetching bookings:", error);
+            console.error("Error fetching bookings:", error.response?.data || error.message);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchBookings();
+        const intervalId = setInterval(fetchBookings, 30000);
+        return () => clearInterval(intervalId);
+    }, [fetchBookings]);
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5000/api/bookings/${id}`);
+            setBookings(prevBookings => prevBookings.filter(booking => booking._id !== id));
+        } catch (error) {
+            console.error("Error deleting booking:", error.response?.data || error.message);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            if (editBooking) {
+                const response = await axios.put(
+                    `http://localhost:5000/api/bookings/${editBooking._id}`, 
+                    formData
+                );
+                setBookings(prevBookings => 
+                    prevBookings.map(booking => 
+                        booking._id === editBooking._id ? response.data : booking
+                    )
+                );
+            } else {
+                const response = await axios.post(
+                    'http://localhost:5000/api/bookings', 
+                    formData
+                );
+                setBookings(prevBookings => [...prevBookings, response.data]);
+            }
+            resetForm();
+        } catch (error) {
+            console.error("Error saving booking:", error.response?.data || error.message);
         }
     };
 
@@ -35,46 +72,25 @@ const BookingTable = () => {
         setUpdateSeen(!updateSeen);
     };
 
-    // Function to handle editing a booking
     const handleEdit = (booking) => {
-        setEditBooking(booking); // Set the booking to edit
-        setFormData(booking); // Populate form with booking data
+        setEditBooking(booking);
+        setFormData(booking);
         toggleUpdatePop();
     };
 
-    // Function to handle deleting a booking
-    const handleDelete = async (id) => {
-        try {
-            await axios.delete(`http://localhost:5000/api/bookings/${id}`); // Delete the booking
-            fetchBookings(); // Refresh the booking list
-        } catch (error) {
-            console.error("Error deleting booking:", error);
-        }
-    };
-
-    // Function to handle form submission for adding or updating a booking
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission
-
-        try {
-            if (editBooking) {
-                // Update the existing booking
-                await axios.put(`http://localhost:5000/api/bookings/${editBooking._id}`, formData);
-            } else {
-                // Create a new booking
-                await axios.post('http://localhost:5000/api/bookings', formData);
-            }
-            fetchBookings(); // Refresh the booking list
-            resetForm(); // Reset the form after submission
-        } catch (error) {
-            console.error("Error saving booking:", error);
-        }
-    };
-
-    // Function to reset the form
     const resetForm = () => {
-        setEditBooking(null); // Clear the editing state
-        setFormData({ name: '', email: '', phone: '', from_date: '', to_date: '', num_guests: 1, price: 0 }); // Clear the form fields
+        setEditBooking(null);
+        setFormData({ name: '', email: '', phone: '', from_date: '', to_date: '', num_guests: 1, price: 0 });
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: name === 'num_guests' ? parseInt(value) : 
+                    name === 'price' ? parseFloat(value) : 
+                    value
+        }));
     };
 
     return (
@@ -82,12 +98,11 @@ const BookingTable = () => {
             <h1 className="text-2xl font-bold mb-4">Booking Management</h1>
             <form className="mb-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {/* Input fields for booking data */}
                     <input
                         type="text"
                         name="name"
                         value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        onChange={handleInputChange}
                         placeholder="Name"
                         className="border p-2 rounded"
                         required
@@ -96,7 +111,7 @@ const BookingTable = () => {
                         type="email"
                         name="email"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={handleInputChange}
                         placeholder="Email"
                         className="border p-2 rounded"
                         required
@@ -105,7 +120,7 @@ const BookingTable = () => {
                         type="tel"
                         name="phone"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={handleInputChange}
                         placeholder="Phone"
                         className="border p-2 rounded"
                         required
@@ -114,7 +129,7 @@ const BookingTable = () => {
                         type="date"
                         name="from_date"
                         value={formData.from_date}
-                        onChange={(e) => setFormData({ ...formData, from_date: e.target.value })}
+                        onChange={handleInputChange}
                         className="border p-2 rounded"
                         required
                     />
@@ -122,7 +137,7 @@ const BookingTable = () => {
                         type="date"
                         name="to_date"
                         value={formData.to_date}
-                        onChange={(e) => setFormData({ ...formData, to_date: e.target.value })}
+                        onChange={handleInputChange}
                         className="border p-2 rounded"
                         required
                     />
@@ -130,7 +145,7 @@ const BookingTable = () => {
                         type="number"
                         name="num_guests"
                         value={formData.num_guests}
-                        onChange={(e) => setFormData({ ...formData, num_guests: parseInt(e.target.value) })}
+                        onChange={handleInputChange}
                         placeholder="Number of Guests"
                         min="1"
                         className="border p-2 rounded"
@@ -140,7 +155,7 @@ const BookingTable = () => {
                         type="number"
                         name="price"
                         value={formData.price}
-                        onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
+                        onChange={handleInputChange}
                         placeholder="Price"
                         className="border p-2 rounded"
                         required
@@ -189,7 +204,7 @@ const BookingTable = () => {
                 <UpdatePopUpForm 
                     toggle={toggleUpdatePop}
                     onFormSubmit={fetchBookings}
-                    currentUser={editBooking} // Pass current booking data
+                    currentUser={editBooking}
                 />
             )}
         </div>

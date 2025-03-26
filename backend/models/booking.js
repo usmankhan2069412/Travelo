@@ -34,6 +34,19 @@ const bookingSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    payment_status: {
+        type: String,
+        enum: ['pending', 'paid', 'failed'],
+        default: 'pending'
+    },
+    payment_intent_id: {
+        type: String,
+        sparse: true
+    },
+    transaction_id: {
+        type: String,
+        sparse: true
+    }
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
 });

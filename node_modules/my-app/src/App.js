@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/Scroll/ScrollToTop';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Admin components
 import Signup from './pages/SignUp';
@@ -18,7 +20,8 @@ import { AuthProvider } from './components/Context/AuthContext';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import MasonryImagesGallery from './components/Image-gallery/MasonryImagesGallery';
-import ThankYouPage from './components/ThankYou/ThankYou';
+// Update the import path if needed
+import ThankYou from './components/ThankYou/ThankYou';
 import BookingDetailsPage from './pages/BookingDetailsPage';
 
 // Lazy-loaded components
@@ -49,7 +52,7 @@ function App() {
                     <Route path="/populardestination" element={<PopularCities />} />
                     <Route path="/imagegallery" element={<MasonryImagesGallery />} />
                     <Route path="/booking-details" element={<BookingDetailsPage />} />
-                    <Route path="/thank-you" element={<ThankYouPage />} />
+                    
 
                     {/* Package-related routes */}
                     <Route path="/package" element={<Package />} />
@@ -74,6 +77,7 @@ function App() {
                         </ProtectedRoute>
                         
                         }>
+                            
                         <Route index element={
                             <AdminDashboard />
                             
@@ -101,9 +105,18 @@ function App() {
 
                     {/* 404 page for undefined routes */}
                     <Route path="*" element={<NotFound />} />
+                    {/* Move the thank-you route outside of any nested routes */}
+                    <Route path="/thank-you" element={
+                        <Suspense fallback={<LoadingComponent />}>
+                            <ThankYou />
+                        </Suspense>
+                    } />
                 </Routes>
             </Suspense>
             <Toaster /> {/* Toast notifications */}
+            {/* Your existing Router and Routes */}
+              <ToastContainer />
+            
         </Router>
         </AuthProvider>
     );

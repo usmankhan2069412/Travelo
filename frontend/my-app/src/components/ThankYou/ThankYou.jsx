@@ -1,28 +1,72 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
-const ThankYouPage = () => {
+const ThankYou = () => {
   return (
-    <div className="bg-fffae5 h-screen flex flex-col justify-center items-center">
-      <h1 className="text-5xl font-extrabold text-center text-ffd400 mb-4">
-        Thank You!
-      </h1>
-      <p className="text-lg text-center text-gray-600 mb-8">
-        We appreciate you reaching out to us. Your message has been sent successfully!
-      </p>
-      <p className="text-lg text-center text-gray-600 mb-4">
-        Our team will get back to you shortly.
-      </p>
-      <p className="text-lg text-center text-gray-600 mb-8">
-        If you need immediate assistance, please email us at <a href="mailto:support@tourtravel.com" className="text-teal-600 underline">support@tourtravel.com</a>.
-      </p>
-      <a 
-        href="/" 
-        className="px-6 py-3 bg-teal-500 text-white font-bold rounded-full hover:bg-teal-600 transition duration-200"
+    <div className="container mx-auto px-4 py-16 text-center">
+      {/* Main Container Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8 border border-gray-200"
       >
-        Return to Home
-      </a>
+        {/* Checkmark Icon Animation */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          className="w-16 h-16 mx-auto mb-6 bg-green-500 rounded-full flex items-center justify-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </motion.div>
+
+        {/* Title Animation */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-3xl font-bold text-gray-800 mb-4"
+        >
+          Thank You for Your Payment!
+        </motion.h1>
+
+        {/* Subtitle Animation */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="text-gray-600 mb-6"
+        >
+          Your booking has been confirmed and payment has been processed
+          successfully.
+        </motion.p>
+
+        {/* Button Animation */}
+        <motion.a
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          href="/"
+          className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300"
+        >
+          Return to Home
+        </motion.a>
+      </motion.div>
     </div>
   );
 };
 
-export default ThankYouPage;
+export default ThankYou;

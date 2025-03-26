@@ -56,12 +56,12 @@ const BookingForm = ({ price }) => {
             const bookingResult = await response.json();
             
             // Set the booking ID from the response
-            if (bookingResult.id) {
-                setBookingId(bookingResult.id);
+            if (bookingResult._id) {
+                setBookingId(bookingResult._id);
                 // Update formData with the booking ID
                 setFormData(prevData => ({
                     ...prevData,
-                    id: bookingResult.id
+                    _id: bookingResult._id
                 }));
             }
             

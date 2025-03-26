@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import Booking from '../models/booking.js';
 
 const stripe = new Stripe('sk_test_51R6FHQBnyNz3YFqgFEqVvW1vBkeMJRDnhOpzUQwnwmDaEjm1yAqeYIivmwJZFTczeOM8BNr3iOQWMbJ6P8ECdVGJ00RpEClrUa');
 
@@ -26,17 +27,44 @@ export const createPaymentIntent = async (req, res) => {
 
 export const updateBookingPaymentStatus = async (req, res) => {
     try {
-        const { bookingId, paymentIntentId } = req.body;
+        const { bookingId, paymentIntentId, status } = req.body;
+
+        if (!bookingId) {
+            return res.status(400).json({ error: 'Booking ID is required' });
+        }
+
+        if (!paymentIntentId) {
+            return res.status(400).json({ error: 'Payment Intent ID is required' });
+        }
 
         // Verify payment status with Stripe
         const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
 
         if (paymentIntent.status === 'succeeded') {
             // Update booking status in database
-            // Add your booking update logic here
-            res.json({ success: true });
+            const updatedBooking = await Booking.findByIdAndUpdate(
+                bookingId,
+                {
+                    payment_status: status || 'paid',
+                    payment_intent_id: paymentIntentId,
+                    transaction_id: paymentIntent.id
+                },
+                { new: true }
+            );
+
+            if (!updatedBooking) {
+                return res.status(404).json({ error: 'Booking not found' });
+            }
+
+            res.json({ success: true, booking: updatedBooking });
         } else {
-            res.status(400).json({ error: 'Payment not completed' });
+            // Update booking status to failed if payment wasn't successful
+            await Booking.findByIdAndUpdate(
+                bookingId,
+                { payment_status: 'failed' },
+                { new: true }
+            );
+            res.status(400).json({ error: 'Payment not completed', status: paymentIntent.status });
         }
     } catch (error) {
         console.error('Error updating booking payment status:', error);

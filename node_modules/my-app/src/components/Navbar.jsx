@@ -10,13 +10,13 @@ const Navbar = () => {
   };
 
   return (
-    <header className="font-sans py-2 shadow-md text-white bg-[#0B3954] sticky top-0 z-50 transition-colors duration-200 lg:bg-[#F4F1DE] lg:text-black">
+    <header className="font-sans py-4 shadow-md text-white bg-[#0B3954] sticky top-0 z-50 transition-colors duration-200 lg:bg-[#F4F1DE] lg:text-black">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-        <nav className="w-full flex items-center justify-between">
+        <nav className="w-full flex items-center justify-between relative">
           {/* Logo and Title */}
-          <Link to="/home" className="flex items-center space-x-2 text-[#FFE156] text-2xl font-bold lg:text-[#0B3954]">
+          <Link to="/home" className="flex items-center space-x-2 text-[#FFE156] text-2xl font-bold lg:text-[#0B3954] z-20">
             {/* <img className="w-12 md:w-16 lg:w-20 h-auto" src={icon} alt="Traveloicon" /> */}
-            <span className="hidden sm:inline">Tour Travel</span>
+            <span className="block text-xl sm:text-2xl">Tour Travel</span>
           </Link>
 
           {/* Menu for larger screens */}
@@ -86,10 +86,10 @@ const Navbar = () => {
           {/* Hamburger Icon for small screens */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-white focus:outline-none z-20 p-2"
             aria-expanded={isMobileMenuOpen}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
@@ -100,34 +100,38 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`md:hidden px-4 py-4 bg-[#0B3954] transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'block' : 'hidden'}`}
+        className={`fixed inset-0 md:hidden bg-[#0B3954] transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        } z-10`}
       >
-        <ul className="space-y-4 text-white">
-          <li>
-            <NavLink to="/home" className="block hover_link hover:scale-105 transition-transform duration-200 cursor-pointer" onClick={toggleMobileMenu}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" className="block hover_link hover:scale-105 transition-transform duration-200 cursor-pointer" onClick={toggleMobileMenu}>About Us</NavLink>
-          </li>
-          <li>
-            <NavLink to="/populardestination" className="block hover_link hover:scale-105 transition-transform duration-200 cursor-pointer" onClick={toggleMobileMenu}>Popular Destinations</NavLink>
-          </li>
-          <li>
-            <NavLink to="/package" className="block hover_link hover:scale-105 transition-transform duration-200 cursor-pointer" onClick={toggleMobileMenu}>Our Packages</NavLink>
-          </li>
-          <li>
-            <NavLink to="/help" className="block hover_link hover:scale-105 transition-transform duration-200 cursor-pointer" onClick={toggleMobileMenu}>Help</NavLink>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              className="block bg-[#ffd61f] text-[#0B3954] px-4 py-2 rounded hover:bg-[#b97329] transition-colors duration-200"
-            >
-              Contact us
-            </Link>
-          </li>
-
-        </ul>
+        <div className="h-full flex flex-col pt-20 px-6">
+          <ul className="space-y-6 text-white text-lg">
+            <li>
+              <NavLink to="/home" className="block py-2 hover:text-[#FFE156] transition-colors duration-200" onClick={toggleMobileMenu}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" className="block py-2 hover:text-[#FFE156] transition-colors duration-200" onClick={toggleMobileMenu}>About Us</NavLink>
+            </li>
+            <li>
+              <NavLink to="/populardestination" className="block py-2 hover:text-[#FFE156] transition-colors duration-200" onClick={toggleMobileMenu}>Popular Destinations</NavLink>
+            </li>
+            <li>
+              <NavLink to="/package" className="block py-2 hover:text-[#FFE156] transition-colors duration-200" onClick={toggleMobileMenu}>Our Packages</NavLink>
+            </li>
+            <li>
+              <NavLink to="/help" className="block py-2 hover:text-[#FFE156] transition-colors duration-200" onClick={toggleMobileMenu}>Help</NavLink>
+            </li>
+            <li className="pt-4">
+              <Link
+                to="/contact"
+                className="block w-full text-center bg-[#ffd61f] text-[#0B3954] px-6 py-3 rounded-lg font-semibold hover:bg-[#FFE156] transition-colors duration-200"
+                onClick={toggleMobileMenu}
+              >
+                Contact us
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
   );
