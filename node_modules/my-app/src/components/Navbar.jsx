@@ -86,7 +86,7 @@ const Navbar = () => {
           {/* Hamburger Icon for small screens */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden text-white focus:outline-none z-20 p-2"
+            className="md:hidden  text-white w-12 focus:outline-none z-20 p-2"
             aria-expanded={isMobileMenuOpen}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -6,7 +6,6 @@ import Hero from "../components/Hero/Hero";
 import PopularCities from "../components/PopularCities/PopularCities";
 import Services from "../components/Services/Services";
 import Packages from "../components/Tour_Packages/Packages";
-import CustomerReviews from "../components/CustomerReviews";
 
 import TravelPage from "../pages/Travelpage";
 
