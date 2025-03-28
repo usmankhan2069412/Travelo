@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-ffe97f  shadow-2xl border-t border-ffd400 text-ffd400">
+    <footer className="bg-ffe97f poppin-light  shadow-2xl border-t border-ffd400 text-ffd400">
       <div className="max-w-9xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h2 className="text-xl font-bold text-ffdd32">MA Tour & Travel</h2>
+            <h2 className="text-xl poppin-medium font-bold text-ffdd32">MA Tour & Travel</h2>
             <p className="mt-4 text-fff2b2">
               We help you discover the best tour packages and travel experiences across the world with ease and simplicity.
             </p>

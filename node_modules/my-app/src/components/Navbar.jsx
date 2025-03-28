@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="font-sans py-4 shadow-md text-white bg-[#0B3954] sticky top-0 z-50 transition-colors duration-200 lg:bg-[#F4F1DE] lg:text-black">
+    <header className=" poppins-semibold py-4 shadow-md text-white bg-[#0B3954] sticky top-0 z-50 transition-colors duration-200 lg:bg-[#F4F1DE] lg:text-black">
       <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
         <nav className="w-full flex items-center justify-between relative">
           {/* Logo and Title */}
@@ -51,17 +51,6 @@ const Navbar = () => {
               </NavLink>
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
             </li>
-            
-            <li className="relative group">
-              <NavLink
-                to="/help"
-                className="hover_link hover:scale-105 transition-transform duration-200 cursor-pointer relative"
-                activeClassName="text-[#F77F00]"
-              >
-                Help
-              </NavLink>
-              <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
-            </li>
             <li className="relative group">
               <NavLink
                 to="/imageGallery"
@@ -72,6 +61,17 @@ const Navbar = () => {
               </NavLink>
               <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
             </li>
+            <li className="relative group">
+              <NavLink
+                to="/help"
+                className="hover_link hover:scale-105 transition-transform duration-200 cursor-pointer relative"
+                activeClassName="text-[#F77F00]"
+              >
+                Help
+              </NavLink>
+              <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0B3954] scale-x-0 transition-transform duration-300 transform origin-center group-hover:scale-x-100" />
+            </li>
+            
            
           </ul>
 

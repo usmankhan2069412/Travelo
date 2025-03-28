@@ -7,7 +7,8 @@ import { FaArrowTrendUp } from "react-icons/fa6";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen bg-cover bg-center">
+    <div className="poppins-regular" > 
+    <div className="relative  h-screen bg-cover bg-center">
       <video
         autoPlay
         loop
@@ -23,7 +24,7 @@ const Hero = () => {
             We Find The Best Tours For You
         </h1>
 
-        <p className="mt-4 max-w-xs text-yellow-500 font-bold sm:max-w-md md:max-w-lg mx-auto text-base sm:text-lg md:text-xl transition-opacity duration-500 opacity-90 hover:opacity-100">
+        <p className="mt-4 font-extralight max-w-xs text-yellow-500 font-bold sm:max-w-md md:max-w-lg mx-auto text-base sm:text-lg md:text-xl transition-opacity duration-500 opacity-90 hover:opacity-100">
           Explore unforgettable destinations with ease. Choose the perfect tour
           and let the journey begin.
         </p>
@@ -50,6 +51,7 @@ const Hero = () => {
       </Link>
     </motion.div>
       </div>
+    </div>
     </div>
   );
 };
