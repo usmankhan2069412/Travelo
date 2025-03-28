@@ -1,7 +1,5 @@
-import Stripe from 'stripe';
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 import Booking from '../models/booking.js';
-
-const stripe = new Stripe('sk_test_51R6FHQBnyNz3YFqgFEqVvW1vBkeMJRDnhOpzUQwnwmDaEjm1yAqeYIivmwJZFTczeOM8BNr3iOQWMbJ6P8ECdVGJ00RpEClrUa');
 
 export const createPaymentIntent = async (req, res) => {
     try {

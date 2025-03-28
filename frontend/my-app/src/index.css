@@ -150,41 +150,4 @@
     animation: slideUp 0.8s ease-out forwards;
   }
 
-  /* Blob Animation */
-@keyframes blob {
-  0% {
-    transform: translateY(0px) translateX(0px);
-  }
-  50% {
-    transform: translateY(-20px) translateX(20px);
-  }
-  100% {
-    transform: translateY(0px) translateX(0px);
-  }
-}
-
-.animate-blob {
-  animation: blob 6s infinite ease-in-out;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-/* Glowing Text Animation */
-@keyframes glow {
-  0%, 100% {
-    text-shadow: 0 0 10px #F77F00, 0 0 20px #F77F00, 0 0 30px #F77F00;
-  }
-  50% {
-    text-shadow: 0 0 20px #F77F00, 0 0 30px #F77F00, 0 0 40px #F77F00;
-  }
-}
-
-.animate-glow {
-  animation: glow 3s infinite ease-in-out;
-}
+  
